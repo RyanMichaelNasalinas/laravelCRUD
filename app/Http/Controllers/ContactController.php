@@ -8,6 +8,9 @@ use App\Http\Requests\ContactValidation;
 
 class ContactController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
     public function index(Contact $contact) {
         $contacts = $contact->get();
         return view('contact.index',compact('contacts'));
@@ -31,18 +34,17 @@ class ContactController extends Controller
         return view('contact.edit',compact('contact'));
     }
 
-    public function update($id) {
+    public function update(ContactValidation $request, $id) {
         $contact = Contact::where('id',$id)->update([
-            'name' => request()->get('name'),
-            'address' => request()->get('address'),
-            'phone' => request()->get('phone'),
+            'name' => $request->get('name'),
+            'address' => $request->get('address'),
+            'phone' => $request->get('phone'),
         ]);
         return redirect()->to('/contacts');
     }
 
     public function destroy($id) {
         $contact = Contact::where('id',$id)->delete();
-
         return redirect('/contacts');
     }
 }

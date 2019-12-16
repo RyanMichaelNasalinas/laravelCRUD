@@ -15,22 +15,22 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
                             </div>
                             <div class="form-group">
                                 <label>Address</label>
-                                <input type="text" name="address" class="form-control">
+                                <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}">
                             </div>
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input type="number" name="phone" class="form-control">
+                                <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('number') }}">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </form>
-                      @if(count($errors) > 0)
+                      @if($errors->any())
                         <div class="alert alert-danger mt-2">
                             @foreach($errors->all() as $error)
                                 <p>{{ $error }}</p>

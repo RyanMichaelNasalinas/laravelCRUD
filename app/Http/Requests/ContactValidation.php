@@ -24,9 +24,9 @@ class ContactValidation extends FormRequest
     public function rules()
     {
         return [
-            'name'=> 'required',
-            'address' => 'required',
-            'phone' => 'required'
+            'name'=> ['required','min:3'],
+            'address' => ['required','min:3'],
+            'phone' => ['required','min:11','numeric']
         ];
     }
 }

@@ -26,3 +26,4 @@ Route::post('/contacts','ContactController@store')->name('contact.store');
 Route::get('/contacts/{id}/edit','ContactController@edit')->name('contact.edit');
 Route::post('/contacts/{id}/store','ContactController@update')->name('contact.update');
 Route::delete('/contacts/{id}','ContactController@destroy')->name('contact.delete');
+// Route::resource('contacts','ContactController');
